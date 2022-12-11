@@ -122,7 +122,7 @@ class WorkshopCustomWidgets {
       child: workshopCardContent,
       height: horizontal ? 145.0 : 154.0,
       margin:
-          horizontal ? EdgeInsets.only(left: 46.0) : EdgeInsets.only(top: 72.0),
+          horizontal ? EdgeInsets.only(left: 46.0) : EdgeInsets.only(top: 90.0),
       decoration: BoxDecoration(
         color: ColorConstants.workshopCardContainer,
         shape: BoxShape.rectangle,
@@ -183,7 +183,9 @@ class WorkshopCustomWidgets {
             child: Stack(
               children: <Widget>[
                 workshopCard,
-                workshopThumbnail,
+                SizedBox(
+                  height: 120,
+                  child: workshopThumbnail),
               ],
             ),
           ));

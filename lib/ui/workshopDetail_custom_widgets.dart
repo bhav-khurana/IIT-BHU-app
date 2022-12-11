@@ -386,93 +386,95 @@ class WorkshopDetailCustomWidgets {
                   scrollDirection: Axis.horizontal,
                   child: Column(
                     children: [
-                      Text(_overviewTitle, style: Style.headerTextStyle),
-                      // SizedBox(width: 1.0),
-                      Row(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                            Label(
-                            triangleHeight: 10.0,
-                            edge: Edge.RIGHT,
-                            child: Container(
-                              padding: const EdgeInsets.only(
-                                  left: 9.0,
-                                  right: 18.0,
-                                  top: 8.0,
-                                  bottom: 8.0),
-                              color: ColorConstants.workshopCardContainer,
-                              child: Text(
-                                workshopSummary.is_workshop
-                                    ? 'Workshop'
-                                    : 'Event',
-                                style: Style.titleTextStyle,
-                              ),
-                            ),
-                                                    ),
-                                                    
-                        workshopDetail == null || kIsWeb
-                            ? Container()
-                            : Container(
-                                child: FutureBuilder<Uri>(
-                                  future:
-                                      DynamicLinkService.createDynamicLink(
-                                          id: workshopDetail.id,
-                                          isPast: isPast),
-                                  builder: (context, snapshot) {
-                                    if (snapshot.hasData) {
-                                      Uri uri = snapshot.data;
-                                      return IconButton(
-                                          color: ColorConstants.iconColor,
-                                          icon: Icon(Icons.share),
-                                          iconSize: 25.0,
-                                          onPressed: () {
-                                            _shareWithImage(uri);
-                                          });
-                                    } else {
-                                      return Container();
-                                    }
-                                  },
-                                ),
-                              ),
-                          workshopDetail == null || kIsWeb
-                              ? Container()
-                              : Container(
-                                  child: FutureBuilder<Uri>(
-                                    future:
-                                        DynamicLinkService.createDynamicLink(
-                                            id: workshopDetail.id,
-                                            isPast: isPast),
-                                    builder: (context, snapshot) {
-                                      if (snapshot.hasData) {
-                                        Uri uri = snapshot.data;
-                                        return IconButton(
-                                            color: ColorConstants.iconColor,
-                                            icon: Icon(Icons.copy_outlined),
-                                            iconSize: 25.0,
-                                            onPressed: () {
-                                              Clipboard.setData(
-                                                      new ClipboardData(
-                                                          text: uri.toString()))
-                                                  .then((_) {
-                                                ScaffoldMessenger.of(context)
-                                                    .showSnackBar(SnackBar(
-                                                  content: Text(
-                                                      "URL copied to clipboard!"),
-                                                  duration:
-                                                      Duration(seconds: 3),
-                                                ));
+                      SizedBox(
+                        width: MediaQuery.of(context).size.width * 0.9,
+                        child: Row(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            Expanded(
+                                flex: 3,
+                                child: Text(_overviewTitle,
+                                    style: Style.headerTextStyle)),
+                            workshopDetail == null || kIsWeb
+                                ? Container()
+                                : Container(
+                                    child: FutureBuilder<Uri>(
+                                      future:
+                                          DynamicLinkService.createDynamicLink(
+                                              id: workshopDetail.id,
+                                              isPast: isPast),
+                                      builder: (context, snapshot) {
+                                        if (snapshot.hasData) {
+                                          Uri uri = snapshot.data;
+                                          return IconButton(
+                                              color: ColorConstants.iconColor,
+                                              icon: Icon(Icons.share),
+                                              iconSize: 25.0,
+                                              onPressed: () {
+                                                _shareWithImage(uri);
                                               });
-                                            });
-                                      } else {
-                                        return Container();
-                                      }
-                                    },
+                                        } else {
+                                          return Container();
+                                        }
+                                      },
+                                    ),
                                   ),
-                                ),
-                        ],
-                      )
-                      
+                            Expanded(
+                              child: workshopDetail == null || kIsWeb
+                                  ? Container()
+                                  : Container(
+                                      child: FutureBuilder<Uri>(
+                                        future: DynamicLinkService
+                                            .createDynamicLink(
+                                                id: workshopDetail.id,
+                                                isPast: isPast),
+                                        builder: (context, snapshot) {
+                                          if (snapshot.hasData) {
+                                            Uri uri = snapshot.data;
+                                            return IconButton(
+                                                color: ColorConstants.iconColor,
+                                                icon: Icon(Icons.copy_outlined),
+                                                iconSize: 25.0,
+                                                onPressed: () {
+                                                  Clipboard.setData(
+                                                          new ClipboardData(
+                                                              text: uri
+                                                                  .toString()))
+                                                      .then((_) {
+                                                    ScaffoldMessenger.of(
+                                                            context)
+                                                        .showSnackBar(SnackBar(
+                                                      content: Text(
+                                                          "URL copied to clipboard!"),
+                                                      duration:
+                                                          Duration(seconds: 3),
+                                                    ));
+                                                  });
+                                                });
+                                          } else {
+                                            return Container();
+                                          }
+                                        },
+                                      ),
+                                    ),
+                            ),
+                          ],
+                        ),
+                      ),
                     ],
+                  ),
+                ),
+                Label(
+                  triangleHeight: 10.0,
+                  edge: Edge.RIGHT,
+                  child: Container(
+                    padding: const EdgeInsets.only(
+                        left: 10.0, right: 20.0, top: 8.0, bottom: 8.0),
+                    color: ColorConstants.workshopCardContainer,
+                    child: Text(
+                      workshopSummary.is_workshop ? 'Workshop' : 'Event',
+                      style: Style.titleTextStyle,
+                    ),
                   ),
                 ),
                 Separator(),
