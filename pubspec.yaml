@@ -57,6 +57,7 @@ dependencies:
   # web
   universal_io: ^1.0.2
   colorful_safe_area: ^0.3.0
+  fluttertoast: ^8.1.2
 
 dev_dependencies:
   # No version number means the latest version
