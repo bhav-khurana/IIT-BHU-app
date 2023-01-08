@@ -467,8 +467,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     Stack(
                       children: [
                         Container(
-                          height: 90.0,
-                          width: 90.0,
+                          height: 80.0,
+                          width: 80.0,
                           decoration: BoxDecoration(
                             image: DecorationImage(
                               image: (showingClubSubscriptions)
