@@ -371,16 +371,17 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         decoration: BoxDecoration(
                           image: DecorationImage(
                             image: (showingClubPrivileges)
-                                ? widget.profileDetails.club_privileges[index]
-                                            .small_image_url ==
+                                ? (widget.profileDetails.club_privileges[index]
+                                            .council.small_image_url !=
                                         null
                                     ? NetworkImage(
                                         widget
                                             .profileDetails
                                             .club_privileges[index]
+                                            .council
                                             .small_image_url,
                                       )
-                                    : AssetImage('assets/iitbhu.jpeg')
+                                    : AssetImage('assets/iitbhu.jpeg'))
                                 : NetworkImage(
                                     widget
                                         .profileDetails
@@ -475,6 +476,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                   ? ((widget
                                               .profileDetails
                                               .club_subscriptions[index]
+                                              .council
                                               .small_image_url ==
                                           null)
                                       ? AssetImage('assets/iitbhu.jpeg')
@@ -482,6 +484,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                           widget
                                               .profileDetails
                                               .club_subscriptions[index]
+                                              .council
                                               .small_image_url,
                                         ))
                                   : NetworkImage(
