@@ -120,7 +120,7 @@ class SideBar extends Drawer {
                 Icons.group_work, "All Workshops and Events", '/allWorkshops'),
             getNavItem(Icons.work_rounded, 'All Entities and Councils',
                 '/allEntities'),
-            getNavItem(Icons.restaurant, 'Mess', '/future'),
+            // getNavItem(Icons.restaurant, 'Mess', '/future'),
 
             getNavItem(Icons.chrome_reader_mode_rounded, "Academics",
                 '/academicsPage'),
@@ -290,32 +290,32 @@ class SideBar extends Drawer {
         .entitiesSummaryFromDatabase
         ?.where((entity) => entity.is_highlighted == true)
         ?.toBuiltList();
-    return entities!=null ?  
-    ListView.builder(
-        physics: NeverScrollableScrollPhysics(),
-        shrinkWrap: true,
-        itemCount: entities.length,
-        itemBuilder: (context, index) {
-          // if (!entities[index].is_permanent && entities[index].is_active){
-          return ListTile(
-            leading: Icon(
-              Icons.new_releases,
-              color: Colors.yellow,
-            ),
-            title: Text(
-              entities[index].name,
-              style:
-                  Style.baseTextStyle.copyWith(color: ColorConstants.textColor),
-            ),
-            onTap: () {
-              Navigator.of(context).push(PageRouteBuilder(
-                  pageBuilder: (_, __, ___) =>
-                      EntityPage(entityId: entities[index].id)));
-            },
-          )
-          ;
-          // }
-        }):Container();
-        ;
+    return entities != null
+        ? ListView.builder(
+            physics: NeverScrollableScrollPhysics(),
+            shrinkWrap: true,
+            itemCount: entities.length,
+            itemBuilder: (context, index) {
+              // if (!entities[index].is_permanent && entities[index].is_active){
+              return ListTile(
+                leading: Icon(
+                  Icons.new_releases,
+                  color: Colors.yellow,
+                ),
+                title: Text(
+                  entities[index].name,
+                  style: Style.baseTextStyle
+                      .copyWith(color: ColorConstants.textColor),
+                ),
+                onTap: () {
+                  Navigator.of(context).push(PageRouteBuilder(
+                      pageBuilder: (_, __, ___) =>
+                          EntityPage(entityId: entities[index].id)));
+                },
+              );
+              // }
+            })
+        : Container();
+    ;
   }
 }
