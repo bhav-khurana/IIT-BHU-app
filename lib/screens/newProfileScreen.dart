@@ -371,8 +371,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         decoration: BoxDecoration(
                           image: DecorationImage(
                             image: (showingClubPrivileges)
-                                ? widget.profileDetails.club_privileges[index]
-                                            .small_image_url ==
+                                ? (widget.profileDetails.club_privileges[index]
+                                            .small_image_url !=
                                         null
                                     ? NetworkImage(
                                         widget
@@ -380,7 +380,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                             .club_privileges[index]
                                             .small_image_url,
                                       )
-                                    : AssetImage('assets/iitbhu.jpeg')
+                                    : AssetImage('assets/iitbhu.jpeg'))
                                 : NetworkImage(
                                     widget
                                         .profileDetails
@@ -432,6 +432,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
   Widget _buildFollowing(BuildContext context) {
     int clubSubscriptions = widget.profileDetails.club_subscriptions.length;
     int entitySubscriptions = widget.profileDetails.entity_subscriptions.length;
+    
+    // debugPrint(widget.profileDetails.club_subscriptions.toString());
     return (clubSubscriptions + entitySubscriptions == 0)
         ? Container(
             // If the User does not have any subscriptions.
@@ -467,8 +469,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     Stack(
                       children: [
                         Container(
-                          height: 90.0,
-                          width: 90.0,
+                          height: 80.0,
+                          width: 80.0,
                           decoration: BoxDecoration(
                             image: DecorationImage(
                               image: (showingClubSubscriptions)
