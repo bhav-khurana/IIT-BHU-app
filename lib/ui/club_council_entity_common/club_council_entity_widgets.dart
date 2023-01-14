@@ -174,7 +174,7 @@ class ClubCouncilAndEntityWidgets {
                   isEntity: isEntity,
                   isSports: (isClub && club.council.name.contains('Sport')),
                 ),
-                _data != null
+                (_data != null && isCouncil==false)
                     ? getSubscribeButtons(
                         context: context,
                         isCouncil: isCouncil,

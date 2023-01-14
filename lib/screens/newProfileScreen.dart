@@ -433,6 +433,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
   Widget _buildFollowing(BuildContext context) {
     int clubSubscriptions = widget.profileDetails.club_subscriptions.length;
     int entitySubscriptions = widget.profileDetails.entity_subscriptions.length;
+
+    // debugPrint(widget.profileDetails.club_subscriptions.toString());
     return (clubSubscriptions + entitySubscriptions == 0)
         ? Container(
             // If the User does not have any subscriptions.
