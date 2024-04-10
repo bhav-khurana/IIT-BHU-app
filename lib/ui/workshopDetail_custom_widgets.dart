@@ -76,7 +76,10 @@ class WorkshopDetailCustomWidgets {
       child: ListView(
         controller: sc,
         children: [
-          getHeading(icon: Icons.location_on, title: 'Location',),
+          getHeading(
+            icon: Icons.location_on,
+            title: 'Location',
+          ),
           SizedBox(height: 5.0),
           workshopDetail == null
               ? Container(
@@ -367,11 +370,9 @@ class WorkshopDetailCustomWidgets {
               Container(
                 padding: EdgeInsets.fromLTRB(0.0,
                     workshopDetail?.image_url != null ? 160 : 72.0, 0.0, 0.0),
-                    
                 child: WorkshopCustomWidgets.getWorkshopOrEventCard(context,
                     w: workshopSummary, editMode: false, horizontal: false),
               ),
-              
               _editWorkshop,
               getToolbar(context),
             ],
@@ -387,14 +388,17 @@ class WorkshopDetailCustomWidgets {
                   child: Column(
                     children: [
                       SizedBox(
-                        width: MediaQuery.of(context).size.width * 0.9,
+                        width: MediaQuery.of(context).size.width * 0.85,
                         child: Row(
                           mainAxisSize: MainAxisSize.min,
                           children: [
                             Expanded(
-                                flex: 3,
-                                child: Text(_overviewTitle,
-                                    style: Style.headerTextStyle)),
+                              flex: 3,
+                              child: Text(
+                                _overviewTitle,
+                                style: Style.headerTextStyle,
+                              ),
+                            ),
                             workshopDetail == null || kIsWeb
                                 ? Container()
                                 : Container(
@@ -560,7 +564,7 @@ class WorkshopDetailCustomWidgets {
   Row _getPeopleGoing() {
     return Row(
       children: <Widget>[
-        Text(isPast ? 'Interested by:' : 'People Going:',
+        Text(isPast ? 'Interested:' : 'People Going:',
             style: TextStyle(
                 fontFamily: 'Opensans',
                 fontSize: 15.0,
@@ -591,7 +595,8 @@ class WorkshopDetailCustomWidgets {
                     SizedBox(width: 7.0),
                     Text(
                       '${workshopDetail.interested_users}',
-                      style: TextStyle(fontSize: 14.0, color: ColorConstants.porTextColor),
+                      style: TextStyle(
+                          fontSize: 14.0, color: ColorConstants.porTextColor),
                     ),
                     isPast
                         ? Container()
@@ -810,10 +815,10 @@ class WorkshopDetailCustomWidgets {
     return Container(
       margin: EdgeInsets.only(top: MediaQuery.of(context).padding.top),
       child: IconButton(
-          color: ColorConstants.iconColor,
-          iconSize: 30,
-          icon: Icon(Icons.arrow_back_ios_new_rounded),
-          onPressed: () async {
+        color: ColorConstants.iconColor,
+        iconSize: 30,
+        icon: Icon(Icons.arrow_back_ios_new_rounded),
+        onPressed: () async {
           Navigator.of(context).pop();
         },
       ),

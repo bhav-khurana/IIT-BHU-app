@@ -47,12 +47,13 @@ dependencies:
   path_provider: ^1.5.1
   photo_view: ^0.10.3
   provider: ^3.0.0+1
-  share_plus: ^1.2.0
+  share_plus:
   shared_preferences: ^0.5.6+3
   skeleton_text: ^1.0.0
   sliding_up_panel: ^2.0.0+1
   sqflite: ^1.2.0
   url_launcher: ^5.1.6
+  file: ^6.1.4
 
   # web
   universal_io: ^1.0.2

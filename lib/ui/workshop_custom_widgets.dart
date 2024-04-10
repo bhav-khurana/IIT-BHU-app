@@ -74,9 +74,9 @@ class WorkshopCustomWidgets {
     Widget _workshopValue({String value, IconData icon}) {
       return Container(
         child: Row(mainAxisSize: MainAxisSize.min, children: <Widget>[
-          Icon(icon, color:  Color(0xff176EDE), size: 12.0),
+          Icon(icon, color: Color(0xff176EDE), size: 13.0),
           Container(width: 8.0),
-          Text(value, style: Style.smallTextStyle),
+          Text(value, style: Style.mediumTextStyle),
         ]),
       );
     }
@@ -93,7 +93,11 @@ class WorkshopCustomWidgets {
               ? Text("CLICK TO EDIT", style: TextStyle(color: Colors.green))
               : SizedBox(height: 1),
           Container(height: 4.0),
-          Text(w.title, style: Style.titleTextStyle,maxLines: 3,),
+          Text(
+            w.title,
+            style: Style.titleTextStyle,
+            maxLines: 3,
+          ),
           Container(height: 10.0),
           Text('${isClub ? w.club.name : w.entity.name}',
               style: Style.commonTextStyle),
@@ -183,9 +187,7 @@ class WorkshopCustomWidgets {
             child: Stack(
               children: <Widget>[
                 workshopCard,
-                SizedBox(
-                  height: 120,
-                  child: workshopThumbnail),
+                SizedBox(height: 120, child: workshopThumbnail),
               ],
             ),
           ));

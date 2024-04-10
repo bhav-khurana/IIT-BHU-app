@@ -275,7 +275,10 @@ class _MyAppState extends State<TheMap> {
         context: context,
         builder: (BuildContext context) {
           return AlertDialog(
-            title: Text(title ?? '(No Title)',style: TextStyle(color: Colors.black),),
+            title: Text(
+              title ?? '(No Title)',
+              style: TextStyle(color: Colors.black),
+            ),
             content: Text(innerText ?? '(No Inner Text)'),
             actions: <Widget>[
               TextButton(
@@ -327,8 +330,11 @@ class _MyAppState extends State<TheMap> {
         backgroundColor: ColorConstants.homeBackground,
         appBar: AppBar(
           backgroundColor: ColorConstants.backgroundThemeColor,
-          title: Text((widget.fromCreateWorkshop ? 'Workshop Location-' : '') +
-              'IIT BHU Map',style: TextStyle(color: Colors.white),),
+          title: Text(
+            (widget.fromCreateWorkshop ? 'Workshop Location-' : '') +
+                'IIT BHU Map',
+            style: TextStyle(color: Colors.white),
+          ),
           centerTitle: true,
           leading: IconButton(
             icon: Icon(Icons.arrow_back, color: Colors.white),
@@ -336,12 +342,18 @@ class _MyAppState extends State<TheMap> {
           ),
           actions: [],
         ),
-        floatingActionButton: FloatingActionButton.extended(
-          backgroundColor: ColorConstants.homeBackground,
-          onPressed: () {
-            _settingModalBottomSheet(context);
-          },
-          label: Text("Popular \u{1F4CC}",style: TextStyle(color: Colors.black),),
+        floatingActionButton: Padding(
+          padding: const EdgeInsets.only(bottom: 10.0),
+          child: FloatingActionButton.extended(
+            backgroundColor: ColorConstants.homeBackground,
+            onPressed: () {
+              _settingModalBottomSheet(context);
+            },
+            label: Text(
+              "Popular \u{1F4CC}",
+              style: TextStyle(color: Colors.black),
+            ),
+          ),
         ),
         floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
         body: Stack(
@@ -392,22 +404,22 @@ class _MyAppState extends State<TheMap> {
                 : Container(),
             _selectedList
                 ? Positioned(
-                    top: 5,
-                    left: 10,
+                    top: 0,
+                    left: 0,
                     child: Container(
                       decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(15),
+                        borderRadius: BorderRadius.circular(0),
                         color: Colors.black12,
                         boxShadow: <BoxShadow>[
                           BoxShadow(
                             color: Colors.black,
-                            blurRadius: 3,
-                            spreadRadius: 5,
+                            blurRadius: 1,
+                            spreadRadius: 1,
                           ),
                         ],
                       ),
                       height: 44,
-                      width: MediaQuery.of(context).size.width - 20,
+                      width: MediaQuery.of(context).size.width,
                       child: Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 5.0),
                         child: ListView.builder(

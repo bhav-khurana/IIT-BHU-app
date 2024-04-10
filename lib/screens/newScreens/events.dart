@@ -33,7 +33,6 @@ class _EventsState extends State<Events> {
 
   FutureBuilder<Response> buildAllWorkshopsBody(BuildContext context,
       {Function reload}) {
-    Size screensize = MediaQuery.of(context).size;
     return FutureBuilder<Response<BuiltAllWorkshopsPost>>(
       future: future,
       builder: (context, snapshot) {
@@ -262,9 +261,7 @@ class EventCard extends StatelessWidget {
                               flex: 1,
                               child: _workshopValue(
                                   value: date, icon: Icons.date_range)),
-                          Container(
-                            width: screensize.width * 0.1,
-                          ),
+                          SizedBox(width: 10),
                           time == null
                               ? SizedBox(height: 1)
                               : Expanded(

@@ -171,7 +171,7 @@ class EntityCustomWidgets {
                         borderRadius: borderRadius,
                         child: SkeletonAnimation(
                           child: Container(
-                            width: 75.0,
+                            width: 60.0,
                             height: 75.0,
                             decoration: BoxDecoration(
                               color: ColorConstants.shimmerSkeletonColor,

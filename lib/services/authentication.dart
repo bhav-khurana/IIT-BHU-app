@@ -57,7 +57,7 @@ verifyToken(String idToken) async {
     (b) => b..id_token = idToken,
   );
   await AppConstants.service.logInPost(logInCredentials).catchError((onError) {
-    print('Error in requesting requesting token: $onError');
+    print('Error in requesting requesting token: ${onError.toString()}');
   }).then((response) {
     if (response.isSuccessful) {
       print('successfully verified token with backend');
@@ -75,6 +75,6 @@ Future<void> signOutGoogle() async {
   await FirebaseAuth.instance.signOut();
   AppConstants.djangoToken = null;
   AppConstants.unsubscribeAll();
-  AppConstants.guestButtonEnabled=true;
+  AppConstants.guestButtonEnabled = true;
   print("User Sign Out");
 }

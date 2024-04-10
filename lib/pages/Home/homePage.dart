@@ -106,49 +106,50 @@ class _HomePageState extends State<HomePage>
     return WillPopScope(
       onWillPop: _onPopHome,
       child: SafeArea(
-          minimum: const EdgeInsets.all(2.0),
-          child: Scaffold(
-            key: _scaffoldKey,
-            backgroundColor: ColorConstants.homeBackground,
-            drawer: SideBar(context: context),
-            floatingActionButton: homeFAB(context, fabKey: fabKey),
-            appBar: homeAppBar(context,
-                searchBarWidget: searchBarWidget,
-                fabKey: fabKey,
-                searchFocusNode: searchFocusNode),
-            body: GestureDetector(
-              onTap: () {
-                if (fabKey.currentState.isOpen) {
-                  fabKey.currentState.close();
-                }
-                if (searchFocusNode.hasFocus) {
-                  searchFocusNode.unfocus();
-                }
-              },
-              child: Container(
-                margin: EdgeInsets.fromLTRB(12, 10, 12, 0),
-                decoration: BoxDecoration(
-                    color: ColorConstants.workshopContainerBackground,
-                    borderRadius: BorderRadius.only(
-                        topLeft: const Radius.circular(40.0),
-                        topRight: const Radius.circular(40.0))),
-                child: ValueListenableBuilder<bool>(
-                  valueListenable: searchListener,
-                  builder: (context, isSearching, child) {
-                    return isSearching
-                        ? buildWorkhops.buildWorkshopsFromSearch(
-                            context: context,
-                            searchPost: searchBarWidget.searchPost)
-                        : HomeScreen(
-                            context: context,
-                            fabKey: fabKey,
-                            reload: _fetchWorkshopsAndCouncilAndEntityButtons,
-                          );
-                  },
-                ),
+        minimum: const EdgeInsets.all(2.0),
+        child: Scaffold(
+          key: _scaffoldKey,
+          backgroundColor: ColorConstants.homeBackground,
+          drawer: SideBar(context: context),
+          floatingActionButton: homeFAB(context, fabKey: fabKey),
+          appBar: homeAppBar(context,
+              searchBarWidget: searchBarWidget,
+              fabKey: fabKey,
+              searchFocusNode: searchFocusNode),
+          body: GestureDetector(
+            onTap: () {
+              if (fabKey.currentState.isOpen) {
+                fabKey.currentState.close();
+              }
+              if (searchFocusNode.hasFocus) {
+                searchFocusNode.unfocus();
+              }
+            },
+            child: Container(
+              margin: EdgeInsets.fromLTRB(12, 10, 12, 0),
+              decoration: BoxDecoration(
+                  color: ColorConstants.workshopContainerBackground,
+                  borderRadius: BorderRadius.only(
+                      topLeft: const Radius.circular(40.0),
+                      topRight: const Radius.circular(40.0))),
+              child: ValueListenableBuilder<bool>(
+                valueListenable: searchListener,
+                builder: (context, isSearching, child) {
+                  return isSearching
+                      ? buildWorkhops.buildWorkshopsFromSearch(
+                          context: context,
+                          searchPost: searchBarWidget.searchPost)
+                      : HomeScreen(
+                          context: context,
+                          fabKey: fabKey,
+                          reload: _fetchWorkshopsAndCouncilAndEntityButtons,
+                        );
+                },
               ),
             ),
-          )),
+          ),
+        ),
+      ),
     );
   }
 }
